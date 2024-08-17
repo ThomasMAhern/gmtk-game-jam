@@ -18,7 +18,7 @@ public partial class Spawner : Node
         }
 
         // Test spawn
-        SpawnEnemy("slime", new Vector2(100, 100));
+        //SpawnEnemy("slime", new Vector2(100, 100));
     }
 
     // Spawn enemy on call
