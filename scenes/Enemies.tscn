@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[node name="Enemies" type="Node2D"]
+
+[node name="Mob1" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mob1"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Mob1"]
+position = Vector2( 323, 240 )
+scale = Vector2( 3.125, 2.96875 )
+texture = ExtResource( 2 )
