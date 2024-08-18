@@ -10,13 +10,17 @@ namespace GMTKGJ2024.resources
 
 		[Export]
 		public float Speed { get; set; }
+		
+		[Export]
+		public float DetectionAreaScale { get; set; }
 
-		public SlimeStats() : this(0, 0) {}
+		public SlimeStats() : this(0, 0, 1) {}
 
-		public SlimeStats(int health, float speed)
+		public SlimeStats(int health, float speed, float detectionAreaScale)
 		{
 			Health = health;
 			Speed = speed;
+			DetectionAreaScale = detectionAreaScale;
 		}
 	}
 }
