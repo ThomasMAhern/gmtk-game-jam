@@ -1,7 +1,9 @@
-using Godot;
 using System;
+using Godot;
 
-public partial class ScaleEffect : Node
+namespace GMTKGJ2024.Scripts;
+
+public partial class ScaleTarget : Area2D
 {
 	[Export] public float MaxScale { get; set; }
 	
