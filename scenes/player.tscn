@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://bmx5pqu0i45gj"]
+[gd_scene load_steps=26 format=3 uid="uid://bmx5pqu0i45gj"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_3smdj"]
 [ext_resource type="Script" path="res://Scripts/PlayerAnimation.cs" id="3_telbw"]
 [ext_resource type="Texture2D" uid="uid://cvnrycp0er34o" path="res://Robot Platform Pack/OrangeRobot/Spritesheets/OrangeRobot_SpriteSheet.png" id="3_y0ig1"]
+[ext_resource type="Script" path="res://Scripts/AbilityPlaceSigil.cs" id="4_ick4l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_65gh5"]
 radius = 5.0
@@ -225,3 +226,7 @@ parameters/idle_walk/Add2/add_amount = 1.0
 parameters/idle_walk/direction_left_right/blend_position = 0.209
 parameters/idle_walk/idle_walk/blend_position = 2.172
 script = ExtResource("3_telbw")
+
+[node name="AbilityPlaceSigil" type="Marker2D" parent="."]
+position = Vector2(0, 3)
+script = ExtResource("4_ick4l")
