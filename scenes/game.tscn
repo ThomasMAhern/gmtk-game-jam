@@ -149,5 +149,5 @@ script = ExtResource("6_gx705")
 [node name="DummyScaleArea" parent="." instance=ExtResource("9_8ga5j")]
 position = Vector2(566, 247)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("10_ppxg4")]
+[node name="hero-2" parent="." instance=ExtResource("10_ppxg4")]
 position = Vector2(462, 407)
