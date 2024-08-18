@@ -189,6 +189,9 @@ libraries = {
 }
 
 [node name="ScaleTarget" parent="." instance=ExtResource("7_bofp1")]
+collision_layer = 256
+collision_mask = 0
+MaxScale = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScaleTarget"]
 position = Vector2(0, -5)

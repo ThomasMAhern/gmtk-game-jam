@@ -24,3 +24,5 @@ debug_color = Color(0.716113, 0.482227, 0.00731048, 0.42)
 
 [connection signal="BurstScaleEffectEnded" from="Emitter" to="." method="OnEffectEnd"]
 [connection signal="EmitScaleEffect" from="Emitter" to="ScaleEventEmmitter" method="ScaleAdd"]
+[connection signal="area_entered" from="ScaleEventEmmitter" to="ScaleEventEmmitter" method="OnPotentialTargetEntered"]
+[connection signal="area_exited" from="ScaleEventEmmitter" to="ScaleEventEmmitter" method="OnPotentialTargetExited"]
