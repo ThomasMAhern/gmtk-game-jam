@@ -15,21 +15,21 @@ radius = 377.005
 [sub_resource type="CircleShape2D" id="CircleShape2D_ojsmc"]
 radius = 5.0
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nwqbd"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ympjk"]
 animation = &"walk"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8canj"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iepq5"]
 animation = &"idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7m080"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uymlp"]
 animation = &"walk"
 
 [sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_fvgyu"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_nwqbd")
+blend_point_0/node = SubResource("AnimationNodeAnimation_ympjk")
 blend_point_0/pos = -1.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_8canj")
+blend_point_1/node = SubResource("AnimationNodeAnimation_iepq5")
 blend_point_1/pos = 0.0
-blend_point_2/node = SubResource("AnimationNodeAnimation_7m080")
+blend_point_2/node = SubResource("AnimationNodeAnimation_uymlp")
 blend_point_2/pos = 5.0
 min_space = 0.0
 max_space = 5.0

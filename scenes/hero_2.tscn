@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://gbh3t4x42qb5"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ub0ax"]
+
+[node name="hero2" type="Sprite2D"]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_ub0ax")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
