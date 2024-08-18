@@ -10,7 +10,7 @@ public partial class GameOver : Control
 	public override void _Ready()
 	{
 		Replay = GetNode<Button>("HBoxContainer/Replay");
-		MainMenu = GetNode<Button>("GHBoxContainer/MainMenu");
+		MainMenu = GetNode<Button>("HBoxContainer/MainMenu");
 
 		Replay.Pressed += OnReplayPressed;
 		MainMenu.Pressed += OnMainMenuPressed;
