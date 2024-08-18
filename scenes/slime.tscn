@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bniid0q3h5fj4"]
+[gd_scene load_steps=26 format=3 uid="uid://bniid0q3h5fj4"]
 
 [ext_resource type="Texture2D" uid="uid://1q22imectiwg" path="res://sprites/characters/slime.png" id="1_3jglq"]
 [ext_resource type="Script" path="res://Scripts/GetSlimeDetectionRadiusScale.cs" id="2_nwkek"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Scripts/MoveToTargetBehavior.cs" id="4_fbt2o"]
 [ext_resource type="Resource" uid="uid://bnexqd3umdhid" path="res://resources/SlimeStats.tres" id="5_xvbdv"]
 [ext_resource type="Script" path="res://Scripts/SlimeAnimation.cs" id="6_qca7t"]
+[ext_resource type="PackedScene" uid="uid://yki6kioqd725" path="res://scenes/ScaleTarget.tscn" id="7_bofp1"]
+[ext_resource type="Script" path="res://Scripts/ChangeSizeEffect.cs" id="8_khmpo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ed5ev"]
 radius = 377.005
@@ -134,6 +136,9 @@ _data = {
 "walk": SubResource("Animation_l4yqm")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_mxo6p"]
+radius = 7.0
+
 [node name="slime" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
@@ -171,19 +176,28 @@ script = ExtResource("3_2eyi1")
 script = ExtResource("4_fbt2o")
 Stats = ExtResource("5_xvbdv")
 
-[node name="AnimationTree" type="AnimationTree" parent="." node_paths=PackedStringArray("AnimatedCharacter")]
+[node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_yp5uf")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/is_dead = false
 parameters/Idle_Walk/blend_position = 2.06729
 script = ExtResource("6_qca7t")
-AnimatedCharacter = NodePath("..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_83ie7")
 }
 
+[node name="ScaleTarget" parent="." instance=ExtResource("7_bofp1")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScaleTarget"]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_mxo6p")
+
+[node name="ChangeSizeEffect" type="Node" parent="."]
+script = ExtResource("8_khmpo")
+
 [connection signal="body_entered" from="detection_area" to="TargetPlayerBehavior" method="OnBodyEntered"]
 [connection signal="body_exited" from="detection_area" to="TargetPlayerBehavior" method="OnBodyExited"]
 [connection signal="OnNewTargetPosition" from="TargetPlayerBehavior" to="MoveToTargetBehavior" method="OnTargetUpdate"]
+[connection signal="OnScaleUpdated" from="ScaleTarget" to="ChangeSizeEffect" method="OnScaleChange"]

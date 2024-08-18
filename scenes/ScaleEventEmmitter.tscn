@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://cqws3q3cl2ih0"]
+[gd_scene load_steps=2 format=3 uid="uid://cqws3q3cl2ih0"]
+
+[ext_resource type="Script" path="res://Scripts/ScaleEventEmmitter.cs" id="1_77f3x"]
 
 [node name="ScaleEventEmmitter" type="Area2D"]
+collision_layer = 0
+collision_mask = 256
+script = ExtResource("1_77f3x")
