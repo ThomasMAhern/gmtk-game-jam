@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SigilConf" load_steps=3 format=3 uid="uid://cfv4cto2jah4f"]
+
+[ext_resource type="Script" path="res://resources/SigilConf.cs" id="1_rjbaw"]
+[ext_resource type="PackedScene" uid="uid://cksv71g3o1xx1" path="res://scenes/sigils/SigilTrebleCleff.tscn" id="1_vrvth"]
+
+[resource]
+script = ExtResource("1_rjbaw")
+SigilInventory = [ExtResource("1_vrvth"), ExtResource("1_vrvth"), ExtResource("1_vrvth")]

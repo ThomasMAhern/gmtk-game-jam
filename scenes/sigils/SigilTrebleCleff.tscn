@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cksv71g3o1xx1"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_oggqb"]
+
+[node name="SigilTrebleCleff" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(6.5, 6.5)
+texture = SubResource("PlaceholderTexture2D_oggqb")
