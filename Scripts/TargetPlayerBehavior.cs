@@ -26,10 +26,10 @@ public partial class TargetPlayerBehavior : Node
 	public override void _PhysicsProcess(double delta)
 	{
 		if (_targetedObject != null)
-		{
-			if (_targetPosition != _targetedObject.Position)
+		{	
+			if (_targetPosition != _targetedObject.GlobalPosition)
 			{
-				_targetPosition = _targetedObject.Position;
+				_targetPosition = _targetedObject.GlobalPosition;
 				EmitSignal(SignalName.OnNewTargetPosition, _targetPosition);
 			}
 		}

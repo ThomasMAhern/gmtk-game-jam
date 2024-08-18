@@ -41,7 +41,7 @@ public partial class MoveToTargetBehavior : Node
 	{
 		if (_targetPosition != Vector2.Inf)
 		{
-			_me.Velocity = (_targetPosition - _me.Position).Normalized() * Stats.Speed;
+			_me.SetVelocity((_targetPosition - _me.GlobalPosition).Normalized() * Stats.Speed);
 			_me.MoveAndSlide();
 		}
 		else
