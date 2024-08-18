@@ -6,3 +6,4 @@
 [resource]
 script = ExtResource("1_rjbaw")
 SigilInventory = [ExtResource("1_vrvth"), ExtResource("1_vrvth"), ExtResource("1_vrvth")]
+SigilCountForFullSpell = 3
