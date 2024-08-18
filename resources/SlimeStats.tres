@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SlimeStats" load_steps=2 format=3 uid="uid://bnexqd3umdhid"]
+
+[ext_resource type="Script" path="res://resources/SlimeStats.cs" id="1_u8dxn"]
+
+[resource]
+script = ExtResource("1_u8dxn")
+Health = 5
+Speed = 2.0

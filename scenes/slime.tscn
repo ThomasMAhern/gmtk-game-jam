@@ -1,7 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://bniid0q3h5fj4"]
+[gd_scene load_steps=26 format=3 uid="uid://bniid0q3h5fj4"]
 
 [ext_resource type="Texture2D" uid="uid://1q22imectiwg" path="res://sprites/characters/slime.png" id="1_3jglq"]
 [ext_resource type="Script" path="res://Scripts/slime.gd" id="1_c12de"]
+[ext_resource type="Script" path="res://scenes/TargetPlayerBehavior.cs" id="3_2eyi1"]
+[ext_resource type="Script" path="res://scenes/MoveToTargetBehavior.cs" id="4_fbt2o"]
+[ext_resource type="Resource" uid="uid://bnexqd3umdhid" path="res://resources/SlimeStats.tres" id="5_xvbdv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ah2w2"]
 atlas = ExtResource("1_3jglq")
@@ -167,5 +170,13 @@ shape = SubResource("CircleShape2D_ed5ev")
 position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_ojsmc")
 
-[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
+[node name="TargetPlayerBehavior" type="Node" parent="."]
+script = ExtResource("3_2eyi1")
+
+[node name="MoveToTargetBehavior" type="Node" parent="."]
+script = ExtResource("4_fbt2o")
+Stats = ExtResource("5_xvbdv")
+
+[connection signal="body_entered" from="detection_area" to="TargetPlayerBehavior" method="OnBodyEntered"]
+[connection signal="body_exited" from="detection_area" to="TargetPlayerBehavior" method="OnBodyExited"]
+[connection signal="OnNewTargetPosition" from="TargetPlayerBehavior" to="MoveToTargetBehavior" method="OnTargetUpdate"]
