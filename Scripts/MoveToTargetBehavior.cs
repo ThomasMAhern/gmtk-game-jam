@@ -1,6 +1,7 @@
 using System;
 using System.Numerics;
 using GMTKGJ2024.resources;
+using GMTKGJ2024.Scripts;
 using Godot;
 using Vector2 = Godot.Vector2;
 
@@ -15,22 +16,7 @@ public partial class MoveToTargetBehavior : Node
 	private Vector2 _targetPosition = Vector2.Inf;
 	public override void _Ready()
 	{
-		Node currentNode = this;
-		while (currentNode != null)
-		{
-			if (currentNode is CharacterBody2D node)
-			{
-				_me = node;
-				break;
-			}
-
-			currentNode = currentNode.GetParent();
-		}
-
-		if (_me == null)
-		{
-			throw new NullReferenceException("No parent CharacterBody2D found: Please attach this script to a descendant of CharacterBody2D!");
-		}
+		_me = this.GetParentOfType<CharacterBody2D>();
 	}
 	
 	private void OnTargetUpdate(Vector2 targetPosition)

@@ -1,6 +1,7 @@
-using Godot;
-using System;
 using GMTKGJ2024.resources;
+using Godot;
+
+namespace GMTKGJ2024.Scripts;
 
 public partial class GetSlimeDetectionRadiusScale : Node2D
 {

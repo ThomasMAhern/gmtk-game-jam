@@ -4,9 +4,13 @@ namespace GMTKGJ2024.Scripts;
 
 public partial class SlimeAnimation : AnimationTree
 {
-	
-	[Export] private CharacterBody2D AnimatedCharacter { get; set; }
-	
+	private CharacterBody2D AnimatedCharacter { get; set; }
+	public override void _Ready()
+	{
+		AnimatedCharacter = this.GetParentOfType<CharacterBody2D>();
+	}
+
+
 
 	public override void _Process(double delta)
 	{
