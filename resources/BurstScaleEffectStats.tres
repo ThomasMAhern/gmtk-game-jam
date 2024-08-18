@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BurstScaleEffectStats" load_steps=2 format=3 uid="uid://cmlgnqjyg2hx4"]
+
+[ext_resource type="Script" path="res://resources/BurstScaleEffectStats.cs" id="1_6p88b"]
+
+[resource]
+script = ExtResource("1_6p88b")
+InitialBurstScaleAddPercent = 1.0
+PerSecondScaleAddPercent = 0.3
+EffectTotalDurationSec = 10

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://yki6kioqd725"]
+
+[ext_resource type="Script" path="res://Scripts/ScaleTarget.cs" id="1_o7rqa"]
+
+[node name="ScaleTarget" type="Area2D"]
+collision_layer = 4294967040
+collision_mask = 4294967040
+script = ExtResource("1_o7rqa")
