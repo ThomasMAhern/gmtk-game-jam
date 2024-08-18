@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cng8iy6fvplgc"]
+
+[ext_resource type="Script" path="res://Scripts/BurstScaleEmitterEffect.cs" id="1_pdlip"]
+[ext_resource type="PackedScene" uid="uid://cqws3q3cl2ih0" path="res://scenes/ScaleEventEmmitter.tscn" id="2_08nra"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1xubb"]
+radius = 59.0
+
+[node name="DummyScaleArea" type="Node"]
+script = ExtResource("1_pdlip")
+
+[node name="ScaleEventEmmitter" parent="." instance=ExtResource("2_08nra")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScaleEventEmmitter"]
+shape = SubResource("CircleShape2D_1xubb")
+debug_color = Color(0.716113, 0.482227, 0.00731048, 0.42)
