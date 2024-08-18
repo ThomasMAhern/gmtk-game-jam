@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://c0jq455hdysw" path="res://resources/PlayerStats.tres" id="6_4wd1n"]
 [ext_resource type="PackedScene" uid="uid://bniid0q3h5fj4" path="res://scenes/slime.tscn" id="6_cylyt"]
 [ext_resource type="Script" path="res://Scripts/Spawner.cs" id="6_gx705"]
-[ext_resource type="PackedScene" uid="uid://c0qnfkqvse6hh" path="res://scenes/enemies2_audio_stream_player_2d.tscn" id="8_wiao1"]
+[ext_resource type="PackedScene" path="res://scenes/enemies2_audio_stream_player_2d.tscn" id="8_wiao1"]
 [ext_resource type="PackedScene" uid="uid://cng8iy6fvplgc" path="res://scenes/DummyScaleArea.tscn" id="9_8ga5j"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_quwh7"]

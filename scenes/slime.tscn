@@ -180,7 +180,7 @@ Stats = ExtResource("5_xvbdv")
 tree_root = SubResource("AnimationNodeStateMachine_yp5uf")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/is_dead = false
-parameters/Idle_Walk/blend_position = 2.06729
+parameters/Idle_Walk/blend_position = 1.33775
 script = ExtResource("6_qca7t")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
