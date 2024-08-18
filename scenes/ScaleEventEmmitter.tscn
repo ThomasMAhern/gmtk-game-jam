@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cqws3q3cl2ih0"]
+
+[node name="ScaleEventEmmitter" type="Area2D"]
