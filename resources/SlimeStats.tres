@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_u8dxn")
 Health = 5
-Speed = 30.0
+Speed = 50.0
 DetectionAreaScale = 30.0
