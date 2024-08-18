@@ -15,19 +15,19 @@ public partial class BurstScaleEmitterEffect : Node
 	[Signal]
 	public delegate void EmitScaleEffectEventHandler(float addPercent);
 	
-	private ulong? _effectEndTime = null;
+	private long? _effectEndTime = null;
 	public void StartEffect()
 	{
-		_effectEndTime = Time.GetTicksMsec() + (ulong)(Stats.EffectTotalDurationSec * 1000);
+		_effectEndTime = (long)Time.GetTicksMsec() + Stats.EffectTotalDurationSec * 1000;
 		EmitSignal(SignalName.EmitScaleEffect, Stats.InitialBurstScaleAddPercent);
 	}
 	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (_effectEndTime != null)
+		if (_effectEndTime is not null)
 		{
-			ulong timeTillEffectEnd =  (ulong)(_effectEndTime - Time.GetTicksMsec());
+			long timeTillEffectEnd = _effectEndTime!.Value - (long)Time.GetTicksMsec();
 			if (timeTillEffectEnd > 0)
 			{
 				EmitSignal(SignalName.EmitScaleEffect, Stats.PerSecondScaleAddPercent * delta);
@@ -35,7 +35,7 @@ public partial class BurstScaleEmitterEffect : Node
 			else
 			{
 				//emit one single last scale effect that matches what was left of the duration
-				EmitSignal(SignalName.EmitScaleEffect, Stats.PerSecondScaleAddPercent * (delta + timeTillEffectEnd));
+				EmitSignal(SignalName.EmitScaleEffect, Stats.PerSecondScaleAddPercent * (delta + timeTillEffectEnd/1000f));
 				EmitSignal(SignalName.BurstScaleEffectEnded);
 			}
 		}
