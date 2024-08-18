@@ -91,25 +91,21 @@ sources/3 = SubResource("TileSetAtlasSource_ulqb5")
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
-position = Vector2(-113, -27)
+position = Vector2(7, 1)
 
 [node name="map_borders" type="StaticBody2D" parent="."]
-visible = false
 position = Vector2(177, 51)
 disable_mode = 1
 
 [node name="right_border" type="CollisionShape2D" parent="map_borders"]
-visible = false
 position = Vector2(1001, 285)
 shape = SubResource("WorldBoundaryShape2D_quwh7")
 
 [node name="left_border" type="CollisionShape2D" parent="map_borders"]
-visible = false
 position = Vector2(-190, 271)
 shape = SubResource("WorldBoundaryShape2D_tcpsx")
 
 [node name="bottom_border" type="CollisionShape2D" parent="map_borders"]
-visible = false
 position = Vector2(401, 616)
 shape = SubResource("WorldBoundaryShape2D_6c6hn")
 
