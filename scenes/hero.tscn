@@ -71,16 +71,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_x65on"]
-radius = 11.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ldmi"]
+radius = 12.0
+height = 54.0
 
 [node name="Hero" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, -56)
 sprite_frames = SubResource("SpriteFrames_h8ywo")
 animation = &"front_idle"
 frame_progress = 0.423609
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 19)
-shape = SubResource("CircleShape2D_x65on")
+position = Vector2(0, -26)
+shape = SubResource("CapsuleShape2D_6ldmi")
