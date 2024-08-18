@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://gbh3t4x42qb5"]
+[gd_scene load_steps=6 format=3 uid="uid://gbh3t4x42qb5"]
 
 [ext_resource type="Texture2D" uid="uid://vqd7lxwjo4ed" path="res://addons/duelyst_animated_sprites/assets/spritesheets/units/f1_groundbreaker.png" id="1_plmn3"]
 
@@ -40,11 +40,15 @@ _data = {
 "idle": SubResource("Animation_lhyfg")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6mugh"]
+radius = 7.0
+height = 28.0
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-68, -124)
-scale = Vector2(1, 1.022)
+position = Vector2(-38, -73)
+scale = Vector2(0.595745, 0.586626)
 texture = ExtResource("1_plmn3")
 centered = false
 hframes = 14
@@ -57,3 +61,7 @@ region_rect = Rect2(0, 0, 1975, 1034)
 libraries = {
 "": SubResource("AnimationLibrary_7qhgs")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -18)
+shape = SubResource("CapsuleShape2D_6mugh")
