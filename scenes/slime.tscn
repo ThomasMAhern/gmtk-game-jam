@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://bniid0q3h5fj4"]
 
 [ext_resource type="Texture2D" uid="uid://1q22imectiwg" path="res://sprites/characters/slime.png" id="1_3jglq"]
-[ext_resource type="Script" path="res://Scripts/slime.gd" id="1_c12de"]
+[ext_resource type="Script" path="res://Scripts/GetSlimeDetectionRadiusScale.cs" id="2_nwkek"]
 [ext_resource type="Script" path="res://Scripts/TargetPlayerBehavior.cs" id="3_2eyi1"]
 [ext_resource type="Script" path="res://Scripts/MoveToTargetBehavior.cs" id="4_fbt2o"]
 [ext_resource type="Resource" uid="uid://bnexqd3umdhid" path="res://resources/SlimeStats.tres" id="5_xvbdv"]
@@ -144,7 +144,6 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ed5ev"]
-radius = 377.005
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ojsmc"]
 radius = 5.0
@@ -152,22 +151,28 @@ radius = 5.0
 [node name="slime" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("1_c12de")
+motion_mode = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_l055o")
 animation = &"front_idle"
 frame_progress = 0.761447
 
 [node name="detection_area" type="Area2D" parent="."]
-collision_layer = 2
+position = Vector2(0, -6)
+collision_layer = 0
 collision_mask = 2
+input_pickable = false
+monitorable = false
+script = ExtResource("2_nwkek")
+_stats = ExtResource("5_xvbdv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
 shape = SubResource("CircleShape2D_ed5ev")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
+position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_ojsmc")
 
 [node name="TargetPlayerBehavior" type="Node" parent="."]
@@ -179,3 +184,4 @@ Stats = ExtResource("5_xvbdv")
 
 [connection signal="body_entered" from="detection_area" to="TargetPlayerBehavior" method="OnBodyEntered"]
 [connection signal="body_exited" from="detection_area" to="TargetPlayerBehavior" method="OnBodyExited"]
+[connection signal="OnNewTargetPosition" from="TargetPlayerBehavior" to="MoveToTargetBehavior" method="OnTargetUpdate"]
