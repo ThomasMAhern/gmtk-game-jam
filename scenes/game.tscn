@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=4 uid="uid://bc8s2d45nuifs"]
+[gd_scene load_steps=19 format=4 uid="uid://bc8s2d45nuifs"]
 
 [ext_resource type="PackedScene" uid="uid://bmx5pqu0i45gj" path="res://scenes/player.tscn" id="1_20h3g"]
 [ext_resource type="Texture2D" uid="uid://d01jd5pwm8idc" path="res://sprites/tilesets/plains.png" id="2_sc0l3"]
 [ext_resource type="Texture2D" uid="uid://54ilm0g0qyam" path="res://sprites/tilesets/grass.png" id="3_kbe7d"]
 [ext_resource type="PackedScene" uid="uid://cp5p4r7v1a08l" path="res://scenes/hero.tscn" id="4_kppj1"]
 [ext_resource type="Texture2D" uid="uid://m7w71jawcyou" path="res://sprites/objects/objects.png" id="4_tdbep"]
+[ext_resource type="Resource" uid="uid://c0jq455hdysw" path="res://resources/PlayerStats.tres" id="6_4wd1n"]
 [ext_resource type="PackedScene" uid="uid://bniid0q3h5fj4" path="res://scenes/slime.tscn" id="6_cylyt"]
 [ext_resource type="Script" path="res://Scripts/Spawner.cs" id="6_gx705"]
 [ext_resource type="PackedScene" uid="uid://c0qnfkqvse6hh" path="res://scenes/enemies2_audio_stream_player_2d.tscn" id="8_wiao1"]
@@ -131,6 +132,7 @@ position = Vector2(419, 450)
 [node name="Player" parent="." instance=ExtResource("1_20h3g")]
 y_sort_enabled = true
 position = Vector2(393, 340)
+Stats = ExtResource("6_4wd1n")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
@@ -146,6 +148,7 @@ script = ExtResource("6_gx705")
 position = Vector2(454, 391)
 collision_layer = 13
 collision_mask = 13
+motion_mode = 1
 
 [node name="AudioStreamPlayer2D" parent="." instance=ExtResource("8_wiao1")]
 

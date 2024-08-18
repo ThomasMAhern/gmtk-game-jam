@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=2 format=3 uid="uid://c0jq455hdysw"]
+
+[ext_resource type="Script" path="res://resources/PlayerStats.cs" id="1_ohimw"]
+
+[resource]
+script = ExtResource("1_ohimw")
+Speed = 200.0
