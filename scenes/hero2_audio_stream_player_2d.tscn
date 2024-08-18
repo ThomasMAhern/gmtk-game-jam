@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckc2qsi0ohu1t"]
+
+[ext_resource type="AudioStream" uid="uid://cb13akqt0rpol" path="res://heroes2_aka_start_screen_music.wav" id="1_7ylim"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_7ylim")
+autoplay = true
+area_mask = 0

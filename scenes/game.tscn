@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bc8s2d45nuifs"]
+[gd_scene load_steps=17 format=4 uid="uid://bc8s2d45nuifs"]
 
 [ext_resource type="PackedScene" uid="uid://bmx5pqu0i45gj" path="res://scenes/player.tscn" id="1_20h3g"]
 [ext_resource type="Texture2D" uid="uid://d01jd5pwm8idc" path="res://sprites/tilesets/plains.png" id="2_sc0l3"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://m7w71jawcyou" path="res://sprites/objects/objects.png" id="4_tdbep"]
 [ext_resource type="PackedScene" uid="uid://bniid0q3h5fj4" path="res://scenes/slime.tscn" id="6_cylyt"]
 [ext_resource type="Script" path="res://Scripts/Spawner.cs" id="6_gx705"]
+[ext_resource type="PackedScene" uid="uid://c0qnfkqvse6hh" path="res://scenes/enemies2_audio_stream_player_2d.tscn" id="8_wiao1"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_quwh7"]
 normal = Vector2(-1, 0)
@@ -90,6 +91,7 @@ sources/3 = SubResource("TileSetAtlasSource_ulqb5")
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
+position = Vector2(-113, -27)
 
 [node name="map_borders" type="StaticBody2D" parent="."]
 visible = false
@@ -144,4 +146,8 @@ limit_bottom = 665
 script = ExtResource("6_gx705")
 
 [node name="Hero" parent="." instance=ExtResource("4_kppj1")]
-position = Vector2(599, 268)
+position = Vector2(454, 391)
+collision_layer = 15
+collision_mask = 15
+
+[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("8_wiao1")]

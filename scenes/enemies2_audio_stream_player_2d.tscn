@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0qnfkqvse6hh"]
+
+[ext_resource type="AudioStream" uid="uid://prf6ryrnc7nd" path="res://enemies2.wav" id="1_3o6d4"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+light_mask = 0
+visibility_layer = 0
+stream = ExtResource("1_3o6d4")
+autoplay = true
+area_mask = 0
