@@ -231,4 +231,4 @@ script = ExtResource("3_telbw")
 [node name="AbilityPlaceSigil" type="Marker2D" parent="."]
 position = Vector2(0, 3)
 script = ExtResource("4_ick4l")
-SigilConfig = ExtResource("5_ndkht")
+AoeAbilityConfig = ExtResource("5_ndkht")
