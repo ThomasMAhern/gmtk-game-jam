@@ -1,46 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://c7hj6fv6w505e"]
+[gd_scene load_steps=19 format=3 uid="uid://c7hj6fv6w505e"]
 
 [ext_resource type="Script" path="res://Scripts/ScaleAreaOfEffect.cs" id="1_pjysk"]
 [ext_resource type="Script" path="res://Scripts/BurstScaleEmitterEffect.cs" id="2_m4jup"]
 [ext_resource type="Resource" uid="uid://cmlgnqjyg2hx4" path="res://resources/BurstScaleEffectStats.tres" id="3_tjqji"]
 [ext_resource type="PackedScene" uid="uid://cqws3q3cl2ih0" path="res://scenes/ScaleEventEmmitter.tscn" id="4_1bh20"]
 [ext_resource type="Texture2D" uid="uid://b3fka7ofuehin" path="res://sprites/particles/dust_particles_01.png" id="5_06lng"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3xt2f"]
-atlas = ExtResource("5_06lng")
-region = Rect2(0, 0, 12, 12)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j7nnu"]
-atlas = ExtResource("5_06lng")
-region = Rect2(12, 0, 12, 12)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qo8ny"]
-atlas = ExtResource("5_06lng")
-region = Rect2(24, 0, 12, 12)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q4a26"]
-atlas = ExtResource("5_06lng")
-region = Rect2(36, 0, 12, 12)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_rwxmq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3xt2f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j7nnu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qo8ny")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q4a26")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="Animation" id="Animation_nou31"]
 length = 0.001
@@ -194,11 +158,7 @@ texture_repeat = 2
 color = Color(0.890196, 0.560784, 0, 1)
 texture = ExtResource("5_06lng")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals/Polygon2D"]
-texture_repeat = 2
-scale = Vector2(50, 50)
-sprite_frames = SubResource("SpriteFrames_rwxmq")
-autoplay = "default"
+[node name="Node2D" type="Node2D" parent="Visuals/Polygon2D"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
