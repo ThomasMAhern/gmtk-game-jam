@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://cmlgnqjyg2hx4" path="res://resources/BurstScaleEffectStats.tres" id="3_tjqji"]
 [ext_resource type="PackedScene" uid="uid://cqws3q3cl2ih0" path="res://scenes/ScaleEventEmmitter.tscn" id="4_1bh20"]
 [ext_resource type="Texture2D" uid="uid://b3fka7ofuehin" path="res://sprites/particles/dust_particles_01.png" id="5_06lng"]
-[ext_resource type="Script" path="res://Scripts/Circle2D.cs" id="6_ahwjj"]
+[ext_resource type="Script" path="res://Scripts/PulsingCircleEffect2D.cs" id="6_dklui"]
 
 [sub_resource type="Animation" id="Animation_nou31"]
 length = 0.001
@@ -48,50 +48,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Visuals/Polygon2D/Circle2DRed:scale")
+tracks/3/path = NodePath("Visuals/Polygon2D/CirclePattern2D:AnimationProgress")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Visuals/Polygon2D/Circle2DOrange:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.5, 0.5)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Visuals/Polygon2D/Circle2DYellow:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.1, 0.1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Visuals/Polygon2D/Circle2DRed:z_index")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_pm53n"]
@@ -145,56 +109,20 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_pwdhn"]
 resource_name = "circle_expand"
-length = 9.0
+length = 10.0
 loop_mode = 1
-step = 3.0
+step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/Polygon2D/Circle2DRed:scale")
+tracks/0/path = NodePath("Visuals/Polygon2D/CirclePattern2D:AnimationProgress")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.01),
+"times": PackedFloat32Array(0, 10),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/Polygon2D/Circle2DOrange:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(6),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Visuals/Polygon2D/Circle2DYellow:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(3, 3.01),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Visuals/Polygon2D/Circle2DRed:z_index")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.01, 3, 6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [3, 2, 1]
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7i7ee"]
@@ -210,28 +138,28 @@ _data = {
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_b4m66"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_83w4m"]
+animation = &"circle_expand"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tgjnn"]
 animation = &"base_rotation"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_on10r"]
 animation = &"base_scale"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_83w4m"]
-animation = &"base_translation"
-
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_c2eco"]
 nodes/Add2/node = SubResource("AnimationNodeAdd2_b4m66")
 nodes/Add2/position = Vector2(280, 120)
 "nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_qktm2")
 "nodes/Add2 2/position" = Vector2(750, 50)
+nodes/circle/node = SubResource("AnimationNodeAnimation_83w4m")
+nodes/circle/position = Vector2(470, 90)
 nodes/output/position = Vector2(930, 100)
 nodes/rot/node = SubResource("AnimationNodeAnimation_tgjnn")
 nodes/rot/position = Vector2(100, 80)
 nodes/scale/node = SubResource("AnimationNodeAnimation_on10r")
 nodes/scale/position = Vector2(120, 220)
-nodes/tr/node = SubResource("AnimationNodeAnimation_83w4m")
-nodes/tr/position = Vector2(520, 180)
-node_connections = [&"Add2", 0, &"rot", &"Add2", 1, &"scale", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"tr", &"output", 0, &"Add2 2"]
+node_connections = [&"Add2", 0, &"rot", &"Add2", 1, &"scale", &"output", 0, &"circle"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nf28k"]
 advance_mode = 2
@@ -258,28 +186,18 @@ Stats = ExtResource("3_tjqji")
 
 [node name="Polygon2D" type="Polygon2D" parent="Visuals"]
 clip_children = 1
-z_index = 5
 texture_repeat = 2
 color = Color(0.890196, 0.560784, 0, 1)
 texture = ExtResource("5_06lng")
 polygon = PackedVector2Array(88, -192, 184, 184, -304, 64)
 
-[node name="Circle2DRed" type="Node2D" parent="Visuals/Polygon2D"]
-script = ExtResource("6_ahwjj")
-Radius = 200.0
-Fill = Color(0.756967, 0.248418, 0.275047, 1)
-
-[node name="Circle2DOrange" type="Node2D" parent="Visuals/Polygon2D"]
-scale = Vector2(0.5, 0.5)
-script = ExtResource("6_ahwjj")
-Radius = 200.0
-Fill = Color(0.892586, 0.442018, 0.0153235, 1)
-
-[node name="Circle2DYellow" type="Node2D" parent="Visuals/Polygon2D"]
-scale = Vector2(0.1, 0.1)
-script = ExtResource("6_ahwjj")
-Radius = 200.0
-Fill = Color(0.890196, 0.968627, 0, 1)
+[node name="CirclePattern2D" type="Node2D" parent="Visuals/Polygon2D"]
+show_behind_parent = true
+script = ExtResource("6_dklui")
+MaxRadius = 500.0
+FillColorA = Color(0.847059, 0, 0, 1)
+FillColorB = Color(0.796078, 0.584314, 0, 1)
+FillColorC = Color(0, 0.960784, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -290,7 +208,7 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_djid1")
 anim_player = NodePath("../AnimationPlayer")
 parameters/base/Add2/add_amount = 1.0
-"parameters/base/Add2 2/add_amount" = 0.0
+"parameters/base/Add2 2/add_amount" = 1.0
 
 [connection signal="OnStartEffect" from="." to="Emmiter" method="StartEffect"]
 [connection signal="BurstScaleEffectEnded" from="Emmiter" to="." method="OnEffectEnd"]
