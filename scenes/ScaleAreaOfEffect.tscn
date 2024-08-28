@@ -215,3 +215,5 @@ parameters/base/Add2/add_amount = 1.0
 [connection signal="OnStartEffect" from="." to="Emmiter" method="StartEffect"]
 [connection signal="BurstScaleEffectEnded" from="Emmiter" to="." method="OnEffectEnd"]
 [connection signal="EmitScaleEffect" from="Emmiter" to="ScaleEventEmmitter" method="ScaleAdd"]
+[connection signal="area_entered" from="ScaleEventEmmitter" to="ScaleEventEmmitter" method="OnPotentialTargetEntered"]
+[connection signal="area_exited" from="ScaleEventEmmitter" to="ScaleEventEmmitter" method="OnPotentialTargetExited"]
