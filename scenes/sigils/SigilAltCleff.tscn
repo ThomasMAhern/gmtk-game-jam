@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d352nnsrl3ado"]
+
+[ext_resource type="Texture2D" uid="uid://smhr72ns3rie" path="res://sprites/objects/Alt-Photoroom.png" id="1_y8skx"]
+
+[node name="SigilAltCleff" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_y8skx")
+region_enabled = true
+region_rect = Rect2(289, 132, 469, 499)

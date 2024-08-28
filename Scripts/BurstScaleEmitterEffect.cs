@@ -22,7 +22,6 @@ public partial class BurstScaleEmitterEffect : Node
 		EmitSignal(SignalName.EmitScaleEffect, Stats.InitialBurstScaleAddPercent);
 	}
 	
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		if (_effectEndTime is not null)
@@ -37,6 +36,7 @@ public partial class BurstScaleEmitterEffect : Node
 				//emit one single last scale effect that matches what was left of the duration
 				EmitSignal(SignalName.EmitScaleEffect, Stats.PerSecondScaleAddPercent * (delta + timeTillEffectEnd/1000f));
 				EmitSignal(SignalName.BurstScaleEffectEnded);
+				_effectEndTime = null;
 			}
 		}
 	}

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8lrtfnqhym7o"]
+
+[ext_resource type="Texture2D" uid="uid://daieqq76vqrsu" path="res://sprites/objects/Bass-Photoroom.png" id="1_d4r7u"]
+
+[node name="SigilBassCleff" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_d4r7u")
+region_enabled = true
+region_rect = Rect2(211, 102, 482, 500)

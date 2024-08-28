@@ -1,0 +1,219 @@
+[gd_scene load_steps=21 format=3 uid="uid://c7hj6fv6w505e"]
+
+[ext_resource type="Script" path="res://Scripts/ScaleAreaOfEffect.cs" id="1_pjysk"]
+[ext_resource type="Script" path="res://Scripts/BurstScaleEmitterEffect.cs" id="2_m4jup"]
+[ext_resource type="Resource" uid="uid://cmlgnqjyg2hx4" path="res://resources/BurstScaleEffectStats.tres" id="3_tjqji"]
+[ext_resource type="PackedScene" uid="uid://cqws3q3cl2ih0" path="res://scenes/ScaleEventEmmitter.tscn" id="4_1bh20"]
+[ext_resource type="Texture2D" uid="uid://b3fka7ofuehin" path="res://sprites/particles/dust_particles_01.png" id="5_06lng"]
+[ext_resource type="Script" path="res://Scripts/PulsingCircleEffect2D.cs" id="6_dklui"]
+
+[sub_resource type="Animation" id="Animation_nou31"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Polygon2D:texture_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Polygon2D:texture_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Polygon2D:texture_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visuals/Polygon2D/CirclePattern2D:AnimationProgress")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pm53n"]
+resource_name = "base_rotation"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Polygon2D:texture_rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_4xu62"]
+resource_name = "base_scale"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Polygon2D:texture_scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_i03mt"]
+resource_name = "base_translation"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Polygon2D:texture_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 5.03333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(500, 0), Vector2(0, 500)]
+}
+
+[sub_resource type="Animation" id="Animation_pwdhn"]
+resource_name = "circle_expand"
+length = 3.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Polygon2D/CirclePattern2D:AnimationProgress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7i7ee"]
+_data = {
+"RESET": SubResource("Animation_nou31"),
+"base_rotation": SubResource("Animation_pm53n"),
+"base_scale": SubResource("Animation_4xu62"),
+"base_translation": SubResource("Animation_i03mt"),
+"circle_expand": SubResource("Animation_pwdhn")
+}
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_qktm2"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_b4m66"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_83w4m"]
+animation = &"circle_expand"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tgjnn"]
+animation = &"base_rotation"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_on10r"]
+animation = &"base_scale"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_c2eco"]
+nodes/Add2/node = SubResource("AnimationNodeAdd2_b4m66")
+nodes/Add2/position = Vector2(280, 120)
+"nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_qktm2")
+"nodes/Add2 2/position" = Vector2(750, 50)
+nodes/circle/node = SubResource("AnimationNodeAnimation_83w4m")
+nodes/circle/position = Vector2(460, 210)
+nodes/output/position = Vector2(930, 100)
+nodes/rot/node = SubResource("AnimationNodeAnimation_tgjnn")
+nodes/rot/position = Vector2(100, 80)
+nodes/scale/node = SubResource("AnimationNodeAnimation_on10r")
+nodes/scale/position = Vector2(120, 220)
+node_connections = [&"Add2", 0, &"rot", &"Add2", 1, &"scale", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"circle", &"output", 0, &"Add2 2"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nf28k"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_djid1"]
+states/base/node = SubResource("AnimationNodeBlendTree_c2eco")
+states/base/position = Vector2(451, 134.5)
+transitions = ["Start", "base", SubResource("AnimationNodeStateMachineTransition_nf28k")]
+
+[node name="ScaleAreaOfEffect" type="Node2D" node_paths=PackedStringArray("CollisionPolygon", "VisualsPolygon", "VisualsCircleEffect")]
+script = ExtResource("1_pjysk")
+CollisionPolygon = NodePath("ScaleEventEmmitter/CollisionPolygon2D")
+VisualsPolygon = NodePath("Visuals/Polygon2D")
+VisualsCircleEffect = NodePath("Visuals/Polygon2D/CirclePattern2D")
+
+[node name="Emmiter" type="Node" parent="."]
+script = ExtResource("2_m4jup")
+Stats = ExtResource("3_tjqji")
+
+[node name="ScaleEventEmmitter" parent="." instance=ExtResource("4_1bh20")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ScaleEventEmmitter"]
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="Visuals"]
+self_modulate = Color(1, 1, 1, 0.5)
+clip_children = 1
+texture_repeat = 2
+color = Color(0.890196, 0.560784, 0, 1)
+texture = ExtResource("5_06lng")
+polygon = PackedVector2Array(88, -192, 184, 184, -304, 64)
+
+[node name="CirclePattern2D" type="Node2D" parent="Visuals/Polygon2D"]
+show_behind_parent = true
+script = ExtResource("6_dklui")
+MaxRadius = 500.0
+FillColorA = Color(0.583716, 0.415708, 4.81307e-07, 1)
+FillColorB = Color(0.80654, 0.578462, 0.0365823, 1)
+FillColorC = Color(0.953, 0.776, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7i7ee")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_djid1")
+anim_player = NodePath("../AnimationPlayer")
+parameters/base/Add2/add_amount = 1.0
+"parameters/base/Add2 2/add_amount" = 1.0
+
+[connection signal="OnStartEffect" from="." to="Emmiter" method="StartEffect"]
+[connection signal="BurstScaleEffectEnded" from="Emmiter" to="." method="OnEffectEnd"]
+[connection signal="EmitScaleEffect" from="Emmiter" to="ScaleEventEmmitter" method="ScaleAdd"]
+[connection signal="area_entered" from="ScaleEventEmmitter" to="ScaleEventEmmitter" method="OnPotentialTargetEntered"]
+[connection signal="area_exited" from="ScaleEventEmmitter" to="ScaleEventEmmitter" method="OnPotentialTargetExited"]
