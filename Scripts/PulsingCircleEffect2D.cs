@@ -112,7 +112,7 @@ public partial class PulsingCircleEffect2D : Node2D
 		var circleCurrAnimProgressB = AnimationProgress + _circleBDelta - (int) Math.Floor(AnimationProgress + _circleBDelta);
 		var circleCurrAnimProgressC = AnimationProgress + _circleCDelta - (int) Math.Floor(AnimationProgress + _circleCDelta);
 
-		if (circleCurrAnimProgressA > circleCurrAnimProgressB && circleCurrAnimProgressA < circleCurrAnimProgressC)
+		if (circleCurrAnimProgressA > circleCurrAnimProgressB && circleCurrAnimProgressA > circleCurrAnimProgressC)
 		{
 			DrawCircle(Vector2.Zero, MaxRadius * circleCurrAnimProgressA, FillColorA);
 			if (circleCurrAnimProgressB > circleCurrAnimProgressC)
@@ -125,7 +125,7 @@ public partial class PulsingCircleEffect2D : Node2D
 				DrawCircle(Vector2.Zero, MaxRadius * circleCurrAnimProgressC, FillColorC);
 				DrawCircle(Vector2.Zero, MaxRadius * circleCurrAnimProgressB, FillColorB);
 			}
-		}else if (circleCurrAnimProgressB < circleCurrAnimProgressA && circleCurrAnimProgressB > circleCurrAnimProgressC)
+		}else if (circleCurrAnimProgressB > circleCurrAnimProgressA && circleCurrAnimProgressB > circleCurrAnimProgressC)
 		{
 			DrawCircle(Vector2.Zero, MaxRadius * circleCurrAnimProgressB, FillColorB);
 			if (circleCurrAnimProgressA > circleCurrAnimProgressC)

@@ -109,7 +109,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_pwdhn"]
 resource_name = "circle_expand"
-length = 10.0
+length = 3.0
 loop_mode = 1
 step = 1.0
 tracks/0/type = "value"
@@ -119,7 +119,7 @@ tracks/0/path = NodePath("Visuals/Polygon2D/CirclePattern2D:AnimationProgress")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 10),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -153,13 +153,13 @@ nodes/Add2/position = Vector2(280, 120)
 "nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_qktm2")
 "nodes/Add2 2/position" = Vector2(750, 50)
 nodes/circle/node = SubResource("AnimationNodeAnimation_83w4m")
-nodes/circle/position = Vector2(470, 90)
+nodes/circle/position = Vector2(460, 210)
 nodes/output/position = Vector2(930, 100)
 nodes/rot/node = SubResource("AnimationNodeAnimation_tgjnn")
 nodes/rot/position = Vector2(100, 80)
 nodes/scale/node = SubResource("AnimationNodeAnimation_on10r")
 nodes/scale/position = Vector2(120, 220)
-node_connections = [&"Add2", 0, &"rot", &"Add2", 1, &"scale", &"output", 0, &"circle"]
+node_connections = [&"Add2", 0, &"rot", &"Add2", 1, &"scale", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"circle", &"output", 0, &"Add2 2"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nf28k"]
 advance_mode = 2
@@ -169,10 +169,11 @@ states/base/node = SubResource("AnimationNodeBlendTree_c2eco")
 states/base/position = Vector2(451, 134.5)
 transitions = ["Start", "base", SubResource("AnimationNodeStateMachineTransition_nf28k")]
 
-[node name="ScaleAreaOfEffect" type="Node2D" node_paths=PackedStringArray("CollisionPolygon", "VisualsPolygon")]
+[node name="ScaleAreaOfEffect" type="Node2D" node_paths=PackedStringArray("CollisionPolygon", "VisualsPolygon", "VisualsCircleEffect")]
 script = ExtResource("1_pjysk")
 CollisionPolygon = NodePath("ScaleEventEmmitter/CollisionPolygon2D")
 VisualsPolygon = NodePath("Visuals/Polygon2D")
+VisualsCircleEffect = NodePath("Visuals/Polygon2D/CirclePattern2D")
 
 [node name="Emmiter" type="Node" parent="."]
 script = ExtResource("2_m4jup")
@@ -185,6 +186,7 @@ Stats = ExtResource("3_tjqji")
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Polygon2D" type="Polygon2D" parent="Visuals"]
+self_modulate = Color(1, 1, 1, 0.5)
 clip_children = 1
 texture_repeat = 2
 color = Color(0.890196, 0.560784, 0, 1)
@@ -195,9 +197,9 @@ polygon = PackedVector2Array(88, -192, 184, 184, -304, 64)
 show_behind_parent = true
 script = ExtResource("6_dklui")
 MaxRadius = 500.0
-FillColorA = Color(0.847059, 0, 0, 1)
-FillColorB = Color(0.796078, 0.584314, 0, 1)
-FillColorC = Color(0, 0.960784, 0, 1)
+FillColorA = Color(0.583716, 0.415708, 4.81307e-07, 1)
+FillColorB = Color(0.80654, 0.578462, 0.0365823, 1)
+FillColorC = Color(0.953, 0.776, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
